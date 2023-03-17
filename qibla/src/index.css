@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: rgb(231, 231, 231);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +11,51 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+.Container {
+  width: 80%;
+  padding: 2% 5%;
+  margin: auto;
+  background-color: white;
+  border-radius: 1.5rem;
+}
+
+#top, #main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+#top h2 {
+  margin-top: 0;
+}
+
+#main {
+  margin-top: 50px;
+}
+
+#top #dates {
+  text-align: right;
+}
+
+#gregorian, #hidjri {
+  margin: 0;
+}
+
+.prayer {
+  background-color: rgb(231, 231, 231);
+  width: 10rem;
+  height: 7rem;
+  border-radius: .5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prayer h3, .prayer p {
+  margin: 0;
 }
