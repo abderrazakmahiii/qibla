@@ -40,13 +40,14 @@ function Prayers() {
 
       axios.get(url).then((response) => {
         const updatedPrayers = [...prayers];
-        updatedPrayers[0].prayerTime = response.data.data[currentDate].timings.Fajr;
-        updatedPrayers[1].prayerTime = response.data.data[currentDate].timings.Sunrise;
-        updatedPrayers[2].prayerTime = response.data.data[currentDate].timings.Dhuhr;
-        updatedPrayers[3].prayerTime = response.data.data[currentDate].timings.Asr;
-        updatedPrayers[4].prayerTime = response.data.data[currentDate].timings.Maghrib;
-        updatedPrayers[5].prayerTime = response.data.data[currentDate].timings.Isha;
+        updatedPrayers[0].prayerTime = response.data.data[currentDate].timings.Fajr.replace(' (WET)', '');
+        updatedPrayers[1].prayerTime = response.data.data[currentDate].timings.Sunrise.replace(' (WET)', '');
+        updatedPrayers[2].prayerTime = response.data.data[currentDate].timings.Dhuhr.replace(' (WET)', '');
+        updatedPrayers[3].prayerTime = response.data.data[currentDate].timings.Asr.replace(' (WET)', '');
+        updatedPrayers[4].prayerTime = response.data.data[currentDate].timings.Maghrib.replace(' (WET)', '');
+        updatedPrayers[5].prayerTime = response.data.data[currentDate].timings.Isha.replace(' (WET)', '');
         setPrayers(updatedPrayers);
+        nextPrayer(prayers)
         setHidjriDate(
           response.data.data[currentDate].date.hijri.day +
             " " +
@@ -63,11 +64,32 @@ function Prayers() {
       });
     }
   }, [latitude, longitude]);
+  const currentTime = new Date();
+const formattedTime = currentTime.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit', hour12: false});
 
+//function to see what is the next prayer
+function nextPrayer(prayers) {
+    const now = new Date();
+    const prayerTimes = prayers.map(prayer => {
+      const timeParts = prayer.prayerTime.split(':');
+      const prayerTime = new Date();
+      prayerTime.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+      return { name: prayer.prayerName, time: prayerTime };
+    });
+    prayerTimes.sort((a, b) => a.time - b.time);
+    const nextPrayerTime = prayerTimes.find(prayer => prayer.time > now);
+    if (nextPrayerTime) {
+      console.log(`The next prayer is ${nextPrayerTime.name} at ${nextPrayerTime.time.toLocaleTimeString()}`);
+    } else {
+      console.log('There are no more prayers today');
+    }
+  }
+  
+  
   return (
     <div className="Container">
       <div id='top'>
-      <h2>Prayer Times in {currentCity}</h2>
+      <h2>Prayers Times in {currentCity}</h2>
       <div id="dates">
         <p id="gregorian">{formattedDate}</p>
         <b id="hidjri">{hidjriDate}</b>
