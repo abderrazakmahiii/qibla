@@ -60,3 +60,22 @@ code {
 .prayer h3, .prayer p {
   margin: 0;
 }
+
+#nextPrayer {
+  border-radius: 1.5rem;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 15rem;
+  height: 10rem;
+  transition: .5s;
+  color: white;
+}
+
+#nextPrayer h3 {
+  font-size: 25px;
+}
+
+#nextPrayer p {
+  font-size: 20px;
+}

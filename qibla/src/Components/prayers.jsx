@@ -79,9 +79,9 @@ function nextPrayer(prayers) {
     prayerTimes.sort((a, b) => a.time - b.time);
     const nextPrayerTime = prayerTimes.find(prayer => prayer.time > now);
     if (nextPrayerTime) {
-      console.log(`The next prayer is ${nextPrayerTime.name} at ${nextPrayerTime.time.toLocaleTimeString()}`);
+      return nextPrayerTime.name;
     } else {
-      console.log('There are no more prayers today');
+      return prayers[0].prayerName
     }
   }
   
@@ -97,9 +97,13 @@ function nextPrayer(prayers) {
       </div>
       <div id='main'>
         {prayers.map((prayer, index)=>(
-            <div className="prayer" key={index}>
+            <div className="prayer" key={index} id={nextPrayer(prayers)===prayer.prayerName? 'nextPrayer': null}>
+                <div id={nextPrayer(prayers)===prayer.prayerName? 'nextPrayer': null}>
+                {document.getElementById("nextPrayer").style.backgroundImage = "url(" + nextPrayer(prayers) + ".png)"}
                 <h3>{prayer.prayerName}</h3>
                 <p>{prayer.prayerTime}</p>
+                {nextPrayer(prayers)===prayer.prayerName? <h5>UPCOMING PRAYER</h5>: null}
+            </div>
             </div>
         ))}
       </div>
@@ -111,3 +115,4 @@ function nextPrayer(prayers) {
 }
 
 export default Prayers;
+
