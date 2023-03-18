@@ -97,13 +97,10 @@ function nextPrayer(prayers) {
       </div>
       <div id='main'>
         {prayers.map((prayer, index)=>(
-            <div className="prayer" key={index} id={nextPrayer(prayers)===prayer.prayerName? 'nextPrayer': null}>
-                <div id={nextPrayer(prayers)===prayer.prayerName? 'nextPrayer': null}>
-                {document.getElementById("nextPrayer").style.backgroundImage = "url(" + nextPrayer(prayers) + ".png)"}
+            <div className="prayer" key={index} id={nextPrayer(prayers)===prayer.prayerName? 'nextPrayer': null}  style={{ backgroundImage:nextPrayer(prayers)===prayer.prayerName && `url("./img/${  prayer.prayerName}.png")`}}>
                 <h3>{prayer.prayerName}</h3>
                 <p>{prayer.prayerTime}</p>
                 {nextPrayer(prayers)===prayer.prayerName? <h5>UPCOMING PRAYER</h5>: null}
-            </div>
             </div>
         ))}
       </div>

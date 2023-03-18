@@ -62,9 +62,13 @@ code {
 }
 
 #nextPrayer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   border-radius: 1.5rem;
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   width: 15rem;
   height: 10rem;
