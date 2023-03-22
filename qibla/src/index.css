@@ -57,7 +57,7 @@ code {
   align-items: center;
 }
 
-.prayer h3, .prayer p {
+.prayer h3, .prayer p, #nextPrayer h5 {
   margin: 0;
 }
 
@@ -82,4 +82,22 @@ code {
 
 #nextPrayer p {
   font-size: 20px;
+}
+
+@media(max-width:900px) {
+  #main {
+    flex-direction: column;
+  }
+
+  .prayer, #nextPrayer {
+    width: 90%;
+    height: 100px;
+    border-radius: 0;
+    margin: 5px auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
 }
