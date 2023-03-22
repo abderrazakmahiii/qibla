@@ -87,9 +87,9 @@ function Prayers() {
       return { name: prayer.name, time: time };
     });
   
-    prayerTimes.sort((a, b) => a.time - b.time);
+    prayerTimes.sort((a, b) => a.time.getTime() - b.time.getTime());
     const nextPrayerTime = prayerTimes.find(prayer => prayer.time > now);
-    
+  
     if (nextPrayerTime) {
       const updatedNextPrayer = {name: nextPrayerTime.name, time: nextPrayerTime.time.toLocaleTimeString()};
       setNextPrayer(updatedNextPrayer);
@@ -98,6 +98,7 @@ function Prayers() {
       setNextPrayer(updatedNextPrayer);
     }
   }
+  
   
   useEffect(() => {
     getNextPrayer(prayers)
