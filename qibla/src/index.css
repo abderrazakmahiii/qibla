@@ -85,6 +85,15 @@ code {
 }
 
 @media(max-width:900px) {
+
+  #top{
+    display: block;
+  }
+
+  #top h2 {
+    text-align: left;
+  }
+  
   #main {
     flex-direction: column;
   }
