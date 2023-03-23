@@ -136,7 +136,7 @@ function Prayers() {
   const vidRef=useRef();
 
   useEffect(() => { vidRef.current.play(); },[]);
-  if(latitude, longitude) {
+  
     return (
       <>
       <div id='home'>
@@ -169,23 +169,23 @@ function Prayers() {
       </div>
       website developed by <a href='abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
     );
-  }
-  else {
-    return(
-      <div className="noloc">
-        <video
-  className="noloc"
-  src={noloc}
-  ref={ vidRef }
-  muted
-  autoPlay
-  loop 
-/>
+  
+//   else {
+//     return(
+//       <div className="noloc">
+//         <video
+//   className="noloc"
+//   src={noloc}
+//   ref={ vidRef }
+//   muted
+//   autoPlay
+//   loop 
+// />
       
-        <h1 style={{textAlign: "center"}}>Oops! ...Looks like you need to allow access to your location and refresh the page.</h1>
-      </div>
-    )
-  }
+//         <h1 style={{textAlign: "center"}}>Oops! ...Looks like you need to allow access to your location and refresh the page.</h1>
+//       </div>
+//     )
+//   }
 }
 
 export default Prayers;
