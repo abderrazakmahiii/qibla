@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import useSound from 'use-sound';
 import axios from "axios";
 import moment from 'moment';
-import azan from '../azan.mp3';
 import logo from '../logo.png';
 import {ImLocation2} from 'react-icons/im';
 
