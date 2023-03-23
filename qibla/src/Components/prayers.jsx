@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import useSound from 'use-sound';
 import axios from "axios";
 import moment from 'moment';
+import azan from '../azan.mp3';
+import logo from '../logo.png';
+import {ImLocation2} from 'react-icons/im';
 
 function Prayers() {
 
@@ -19,6 +23,7 @@ function Prayers() {
 
   const [hidjriDate, setHidjriDate] = useState("");
   const [currentCity, setCurrentCity] = useState("");
+  const [currentCountry, setCurrentCountry] = useState("");
   const [timeRemaining, setTimeRemaining] = useState('');
 
   const date = new Date();
@@ -68,6 +73,7 @@ function Prayers() {
       const url2 = `https://api.opencagedata.com/geocode/v1/json?key=093d474da6624e9a84d74236f69f6c2a&q=${latitude}%2C${longitude}&pretty=1`;
       axios.get(url2).then((response) => {
         setCurrentCity(response.data.results[0].components.city);
+        setCurrentCountry(response.data.results[0].components.country);
       });
     }
   }
@@ -124,16 +130,22 @@ function Prayers() {
   
     return () => clearInterval(intervalId);
   }
-  
 
   useEffect(() => {
     NextPrayerCountdown(nextPrayer)
   }, [nextPrayer]);
 
   return (
+    <>
+    <div id='home'>
+      <div className="up">
+        <img src={logo} />
+        <h4><ImLocation2 />{currentCity}, {currentCountry}</h4>
+      </div>
+    </div>
     <div className="Container">
       <div id='top'>
-      <h2>Prayers Times in {currentCity}</h2>
+      <h2>Prayers Times in <span>{currentCity}</span></h2>
       <div id="dates">
         <p id="gregorian">{formattedDate}</p>
         <b id="hidjri">{hidjriDate}</b>
@@ -153,6 +165,7 @@ function Prayers() {
           <h5>Muslim World League</h5>
         </div>
     </div>
+    website developed by <a href='abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
   );
 }
 
