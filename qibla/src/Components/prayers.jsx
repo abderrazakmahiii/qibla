@@ -133,9 +133,7 @@ function Prayers() {
   useEffect(() => {
     NextPrayerCountdown(nextPrayer)
   }, [nextPrayer]);
-  const vidRef=useRef();
-
-  useEffect(() => { vidRef.current.play(); },[]);
+  
   if(latitude, longitude) {
     return (
       <>
@@ -171,6 +169,9 @@ function Prayers() {
     );
   }
   else {
+    const vidRef=useRef();
+
+  useEffect(() => { vidRef.current.play(); },[]);
     return(
       <div className="noloc">
         <video
