@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import useSound from 'use-sound';
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import moment from 'moment';
 import logo from '../logo.png';
+import noloc from '../404.mp4';
 import {ImLocation2} from 'react-icons/im';
 
 function Prayers() {
@@ -133,39 +133,59 @@ function Prayers() {
   useEffect(() => {
     NextPrayerCountdown(nextPrayer)
   }, [nextPrayer]);
+  const vidRef=useRef();
 
-  return (
-    <>
-    <div id='home'>
-      <div className="up">
-        <img src={logo} />
-        <h4><ImLocation2 />{currentCity}, {currentCountry}</h4>
-      </div>
-    </div>
-    <div className="Container">
-      <div id='top'>
-      <h2>Prayers Times in <span>{currentCity}</span></h2>
-      <div id="dates">
-        <p id="gregorian">{formattedDate}</p>
-        <b id="hidjri">{hidjriDate}</b>
-      </div>
-      </div>
-      <div id='main'>
-        {prayers.map((prayer, index)=>(
-             <div className="prayer" key={index} id={nextPrayer.name===prayer.name? 'nextPrayer': null}  style={{ backgroundImage:nextPrayer.name===prayer.name && `url("./img/${prayer.name}.png")`}}>
-                <h3>{prayer.name}</h3>
-                <p>{prayer.time}</p>
-                {nextPrayer.name===prayer.name? <h5>UPCOMING PRAYER</h5>: null}
-                {nextPrayer.name===prayer.name? <h3>{timeRemaining}</h3>: null}
-            </div>
-        ))}
-      </div>
-      <div id='bottom'>
-          <h5>Muslim World League</h5>
+  useEffect(() => { vidRef.current.play(); },[]);
+  if(latitude, longitude) {
+    return (
+      <>
+      <div id='home'>
+        <div className="up">
+          <img src={logo} />
+          <h4><ImLocation2 />{currentCity}, {currentCountry}</h4>
         </div>
-    </div>
-    website developed by <a href='abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
-  );
+      </div>
+      <div className="Container">
+        <div id='top'>
+        <h2>Prayers Times in <span>{currentCity}</span></h2>
+        <div id="dates">
+          <p id="gregorian">{formattedDate}</p>
+          <b id="hidjri">{hidjriDate}</b>
+        </div>
+        </div>
+        <div id='main'>
+          {prayers.map((prayer, index)=>(
+               <div className="prayer" key={index} id={nextPrayer.name===prayer.name? 'nextPrayer': null}  style={{ backgroundImage:nextPrayer.name===prayer.name && `url("./img/${prayer.name}.png")`}}>
+                  <h3>{prayer.name}</h3>
+                  <p>{prayer.time}</p>
+                  {nextPrayer.name===prayer.name? <h5>UPCOMING PRAYER</h5>: null}
+                  {nextPrayer.name===prayer.name? <h3>{timeRemaining}</h3>: null}
+              </div>
+          ))}
+        </div>
+        <div id='bottom'>
+            <h5>Muslim World League</h5>
+          </div>
+      </div>
+      website developed by <a href='abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
+    );
+  }
+  else {
+    return(
+      <div className="noloc">
+        <video
+  className="noloc"
+  src={noloc}
+  ref={ vidRef }
+  muted
+  autoPlay
+  loop 
+/>
+      
+        <h1 style={{textAlign: "center"}}>Oops! ...Looks like you need to allow access to your location and refresh the page.</h1>
+      </div>
+    )
+  }
 }
 
 export default Prayers;
