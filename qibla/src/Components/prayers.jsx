@@ -164,7 +164,7 @@ function Prayers() {
             <h5>Muslim World League</h5>
           </div>
       </div>
-      website developed by <a href='abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
+      website developed by <a href='https://abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
     );
 }
 else {
