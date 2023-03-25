@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import moment from 'moment';
 import logo from '../logo.png';
-import noloc from '../404.mp4';
 import {ImLocation2} from 'react-icons/im';
 
 function Prayers() {
@@ -167,26 +166,14 @@ function Prayers() {
       </div>
       website developed by <a href='abderrazakmahiii.github.io/myportfolio'>Abderrazak Mahi</a></>
     );
-  }
-  else {
-    const vidRef=useRef();
-
-  useEffect(() => { vidRef.current.play(); },[]);
-    return(
-      <div className="noloc">
-        <video
-  className="noloc"
-  src={noloc}
-  ref={ vidRef }
-  muted
-  autoPlay
-  loop 
-/>
-      
-        <h1 style={{textAlign: "center"}}>Oops! ...Looks like you need to allow access to your location and refresh the page.</h1>
-      </div>
-    )
-  }
 }
-
+else {
+  return(
+    <div id="location-prompt">
+      <img className='noloclogo' src={logo} />
+        <p>Please activate and allow location so we can get you the prayers times according to your location.</p>
+    </div>
+  )
+}
+}
 export default Prayers;
