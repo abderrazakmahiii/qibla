@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/qibla/static/css/main.e5eae89b.css",
-    "main.js": "/qibla/static/js/main.650352b1.js",
+    "main.js": "/qibla/static/js/main.5b4ee829.js",
     "static/js/787.8aa89c85.chunk.js": "/qibla/static/js/787.8aa89c85.chunk.js",
     "static/media/home.gif": "/qibla/static/media/home.16fb7239331329e1d1cc.gif",
     "static/media/logo.png": "/qibla/static/media/logo.c6931f9f70ed90b3b36d.png",
     "index.html": "/qibla/index.html",
     "main.e5eae89b.css.map": "/qibla/static/css/main.e5eae89b.css.map",
-    "main.650352b1.js.map": "/qibla/static/js/main.650352b1.js.map",
+    "main.5b4ee829.js.map": "/qibla/static/js/main.5b4ee829.js.map",
     "787.8aa89c85.chunk.js.map": "/qibla/static/js/787.8aa89c85.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e5eae89b.css",
-    "static/js/main.650352b1.js"
+    "static/js/main.5b4ee829.js"
   ]
 }
